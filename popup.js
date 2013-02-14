@@ -9,6 +9,7 @@ function generateDashboard() {
 	showIcons(icons);
 }
 
+//returns a list of favicon urls
 function getIcons(links) {
 	var icons = new Array();
 	for (var i = 0; i < links.length; i++) {
@@ -18,6 +19,7 @@ function getIcons(links) {
 	return icons;
 }
 
+//Creates a bunch of imgs for each favicon
 function showIcons(icons) {
   for (var i = 0; i < icons.length; i++) {
     var img = document.createElement('img');
@@ -33,15 +35,11 @@ function showIcons(icons) {
   }
 }
 
+//gets the domain name of a url
 function hostnameFromURL(url) {
   var a = document.createElement ('a');
   a.href = url;
   return a.hostname;
-}
-
-function openLinkInCurrentTab(link) {
-	console.log(link);
-	chrome.tabs.create({url: link}, null)
 }
 
 // Run the links generator
