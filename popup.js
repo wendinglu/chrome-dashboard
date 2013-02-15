@@ -82,8 +82,24 @@ function addLinkDialog() {
 	form.addEventListener("keydown", newLinkSubmit);
 }
 
-//process to add another link
+//new link submit action
+function newLinkSubmit(event) {
+	if (event.keyCode == 13) {
+		debugger;
 
+		//Add the link to preferences
+		var newLink = document.getElementById("text-box").value;
+		links.push(newLink);
+		console.log(newLink);
+		localStorage["links"] = JSON.stringify(links);
+
+		//Hide the toolbar again
+		document.getElementById("text-box").className = "inactive";
+
+		//Refresh everything
+		generateDashboard();
+	}
+}
 
 /* Utility Functions */
 
@@ -106,24 +122,6 @@ function supportsLocalstorage() {
   } catch (e) {
     return false;
   }
-}
-
-function newLinkSubmit(event) {
-	if (event.keyCode == 13) {
-		debugger;
-		
-		//Add the link to preferences
-		var newLink = document.getElementById("text-box").value;
-		links.push(newLink);
-		console.log(newLink);
-		localStorage["links"] = JSON.stringify(links);
-
-		//Hide the toolbar again
-		document.getElementById("text-box").className = "inactive";
-
-		//Refresh everything
-		generateDashboard();
-	}
 }
 
 /********************
