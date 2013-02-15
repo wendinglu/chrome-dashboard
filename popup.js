@@ -79,7 +79,7 @@ function addLinkDialog() {
 	form.className = "active";
 
 	//Add event listener for form
-	form.setAttribute("action", "javascript.newLinkSubmit();");
+	form.addEventListener("keydown", newLinkSubmit);
 }
 
 //process to add another link
@@ -108,9 +108,22 @@ function supportsLocalstorage() {
   }
 }
 
-function newLinkSubmit() {
-	alert("HI");
-	return false;
+function newLinkSubmit(event) {
+	if (event.keyCode == 13) {
+		debugger;
+		
+		//Add the link to preferences
+		var newLink = document.getElementById("text-box").value;
+		links.push(newLink);
+		console.log(newLink);
+		localStorage["links"] = JSON.stringify(links);
+
+		//Hide the toolbar again
+		document.getElementById("text-box").className = "inactive";
+
+		//Refresh everything
+		generateDashboard();
+	}
 }
 
 /********************
