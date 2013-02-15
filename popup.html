@@ -10,16 +10,54 @@
 
       img {
         margin: 5px;
-        border: 2px solid black;
+        border: 1px solid #ccc;
         vertical-align: middle;
         width: 19px;
         height: 19px;
       }
+
+      #addLink-button {
+        border: 1px solid #fff;
+      }
+
+      form input.inactive {
+        visibility: hidden;
+        opacity: 0;
+        width: 100%;
+        height: 0;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        -webkit-transition: opacity 0.2s ease-in;
+        transition: opacity 0.2s ease-in;
+      }
+
+      form input.active {
+        opacity: 1;
+        width: 100%;
+        position: block;
+        margin: auto;
+        padding: 5px;
+        -webkit-transition: opacity 0.2s ease-in;
+        transition: opacity 0.2s ease-in;
+      }
+
+      #submit-button {
+        position: absolute;
+        left: -9999px;
+        width: 1px;
+        height: 1px;
+      }
+
     </style>
 	  <script src="popup.js"></script>
   </head>
   <body>
 		<div id="images">
 		</div>
+    <form name="addLink">
+      <input id="text-box" class="inactive" type="text" name="link-url" value="Enter URL" />
+      <input id="submit-button" type="submit" name="submit-button" value="submit" /> 
+    </form>
   </body>
 </html>
